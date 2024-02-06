@@ -35,8 +35,32 @@ public class UnitStatusView : MonoBehaviour
         _viewModel.HealthChanged += OnHealthChanged;
         _healthBar.Init(_viewModel.Health, _viewModel.MaxHealth);
 
-        _viewModel.Shake += OnShake;
-        _viewModel.Appear += ShowAppearAnimation;
+        _viewModel.ShowAnimation += OnShowAnimation;
+    }
+
+    private void OnHealthChanged(int value)
+    {
+        _healthBar.HealthChanged(value);
+    }
+
+    private void OnShowAnimation(ShowAnimationType animationType)
+    {
+        switch (animationType)
+        {
+            case ShowAnimationType.Appear:
+                ShowAppearAnimation();
+                break;
+            case ShowAnimationType.Shake:
+                OnShake();
+                break;
+            case ShowAnimationType.Punch:
+                OnPunch();
+                break;
+            case ShowAnimationType.Strike:
+                OnStrike();
+
+                break;
+        }
     }
 
     private void OnShake()
@@ -49,8 +73,13 @@ public class UnitStatusView : MonoBehaviour
         _unitImage.transform.DOMove(_unitImagePosition.position, 2.0f, false);
     }
 
-    private void OnHealthChanged(int value)
+    private void OnPunch()
     {
-        _healthBar.HealthChanged(value);
+        _unitImage.transform.DOPunchPosition(new Vector3(80, 0, 0), 1.0f, 30, 1);
+    }
+
+    private void OnStrike()
+    {
+         _unitImage.transform.DOPunchPosition(new Vector3(0, 80, 0), 1.0f, 40, 1);
     }
 }

@@ -21,8 +21,6 @@ public class GameStateStart : GameState
 
     public override void OnEnter()
     {
-        Debug.LogWarning("Game state start!");
-
         var command1 = _turnManager.CreateShowAnimationCommand(ShowAnimationType.Appear, true);
         var command2 = _turnManager.CreateShowAnimationCommand(ShowAnimationType.Appear, false);
 

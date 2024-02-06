@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Zenject;
 
@@ -31,6 +30,7 @@ public class GameStateEnemyTurn : GameState
 
         var abilityStrings = new List<string>() { string.Format("{0} использует {1}",_enemy.Name, ability.Name) };
         var command1 = _turnManager.CreateShowMessageCommand(abilityStrings);
+        var commandPunch = _turnManager.CreateShowAnimationCommand(ShowAnimationType.Punch, true);
 
         var effectCommands = new List<Command>();
         foreach (var effect in ability.Effects)
@@ -46,6 +46,7 @@ public class GameStateEnemyTurn : GameState
         {
             command0,
             command1,
+            commandPunch
         };
 
         commands.AddRange(effectCommands);

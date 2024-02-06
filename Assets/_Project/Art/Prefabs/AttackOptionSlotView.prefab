@@ -144,8 +144,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0411\u041E\u0419"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3d9508d141fa87f428f0fb277aebfb7e, type: 2}
+  m_sharedMaterial: {fileID: -6129168411305578872, guid: 3d9508d141fa87f428f0fb277aebfb7e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -285,3 +285,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotName: {fileID: 3625824134703065031}
   _selectedBlock: {fileID: 1403336969383907693}
+  _defaultColor: {r: 0.92941177, g: 0.88235295, b: 0.74509805, a: 1}
+  _inactiveColor: {r: 0.65882355, g: 0.65882355, b: 0.654902, a: 1}

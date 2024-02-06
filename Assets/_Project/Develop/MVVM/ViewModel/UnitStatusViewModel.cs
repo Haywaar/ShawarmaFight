@@ -9,21 +9,15 @@ public class UnitStatusViewModel
     public int MaxHealth => _model.MaxHealth;
     public int Level => _model.Level;
     public event Action<int> HealthChanged;
-    public event Action Shake;
-    public event Action Appear;
+    public event Action<ShowAnimationType> ShowAnimation;
     public UnitStatusViewModel(UnitModel model)
     {
         _model = model;
         _model.HealthChanged += (health) => HealthChanged?.Invoke(health);
     }
 
-    public void ShakeIcon()
+    public void Animate(ShowAnimationType showAnimationType)
     {
-        Shake?.Invoke();
-    }
-
-    public void AppearIcon()
-    {
-        Appear?.Invoke();
+        ShowAnimation?.Invoke(showAnimationType);
     }
 }

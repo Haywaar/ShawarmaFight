@@ -18,6 +18,7 @@ public class GameInstaller : MonoInstaller
     SignalBusInstaller.Install(Container);
     Container.DeclareSignal<ItemUsedSignal>().OptionalSubscriber();
     Container.DeclareSignal<PlayerUsedAbilitySignal>().OptionalSubscriber();
+    Container.DeclareSignal<PlayerRunSignal>().OptionalSubscriber();
 
     Container.Bind<UIPanelInputController>().FromInstance(_inputController);
     Container.Bind<UIPanelStateController>().FromInstance(_stateController);

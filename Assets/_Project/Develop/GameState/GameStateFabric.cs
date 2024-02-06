@@ -28,8 +28,11 @@ public class GameStateFabric
             case GameStateType.EnemyTurn:
                 gameState = new GameStateEnemyTurn(gameStateType);
                 break;
-             case GameStateType.Lose:
+            case GameStateType.Lose:
                 gameState = new GameStateLose(gameStateType);
+                break;
+            case GameStateType.Win:
+                gameState = new GameStateWin(gameStateType);
                 break;
             default:
                 Debug.LogErrorFormat("No switch-case for gamestateType {0}", gameStateType);

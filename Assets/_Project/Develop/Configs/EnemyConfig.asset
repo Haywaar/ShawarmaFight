@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitData:
     _name: SHAWARMA
-    _health: 30
-    _maxHealth: 30
+    _health: 15
+    _maxHealth: 15
     _level: 1
     _isEnemy: 1
     unitAbilities:
@@ -28,3 +28,4 @@ MonoBehaviour:
     - AbilityID: 6
       CurrentQuantity: 99
       MaxQuantity: 99
+    _unitItems: []

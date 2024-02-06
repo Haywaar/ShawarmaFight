@@ -70,7 +70,6 @@ public class UIPanelStateAttack : UIPanelState
     public override void HandleSelectedSlotChanged(Vector2 vectorDelta)
     {
         var newIndex = _currentIndex + new Vector2(0, vectorDelta.y);
-        Debug.LogWarning("new index is " + newIndex + "panel active self " + gameObject.activeSelf + " " + gameObject.name);
 
         if (_viewModels.ContainsKey(newIndex) && _currentIndex != newIndex)
         {

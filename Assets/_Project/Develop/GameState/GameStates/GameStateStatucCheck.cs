@@ -9,9 +9,9 @@ public class GameStateStatusCheck : GameState
     [Inject(Id = "Player")]
     private UnitModel _player;
 
-     [Inject]
+    [Inject]
     private GameStateController _gameStateController;
-    
+
     public GameStateStatusCheck(GameStateType gameStateType) : base(gameStateType)
     {
     }
@@ -23,23 +23,25 @@ public class GameStateStatusCheck : GameState
 
     public override void OnEnter()
     {
-        Debug.LogWarning("Game state status check!");
-
-        if(_player.Health <= 0 && _enemy.Health > 0)
+        if (_player.Health <= 0 && _enemy.Health > 0)
         {
             _gameStateController.SetState(GameStateType.Lose);
             return;
         }
 
-        if(_gameStateController.PrevGameState == GameStateType.PlayerTurn)
+        if (_player.Health >= 0 && _enemy.Health <= 0)
         {
-            Debug.LogWarning("Player turn done!");
+            _gameStateController.SetState(GameStateType.Win);
+            return;
+        }
+
+        if (_gameStateController.PrevGameState == GameStateType.PlayerTurn)
+        {
             _gameStateController.SetState(GameStateType.EnemyTurn);
             return;
         }
-        else if(_gameStateController.PrevGameState == GameStateType.EnemyTurn)
+        else if (_gameStateController.PrevGameState == GameStateType.EnemyTurn)
         {
-             Debug.LogWarning("Enemy turn done!");
             _gameStateController.SetState(GameStateType.PlayerTurn);
             return;
         }

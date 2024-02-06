@@ -23,18 +23,8 @@ public class ShowAnimationCommand : Command
     {
         var data = (ShowAnimationData)_commandData;
         var targetViewModel = data.IsPlayer ? _playerStatusViewModel : _enemyStatusViewModel;
-        float delayTime = 0.0f;
-        switch (data.AnimationType)
-        {
-            case ShowAnimationType.Shake:
-                targetViewModel.ShakeIcon();
-                delayTime = 1.0f;
-                break;
-            case ShowAnimationType.Appear:
-                targetViewModel.AppearIcon();
-                delayTime = 0.0f;
-                break;
-        }
+        float delayTime = 1.0f;
+        targetViewModel.Animate(data.AnimationType);
 
         _tickManager.InvokeWithDelay(onCompleted, delayTime);
     }

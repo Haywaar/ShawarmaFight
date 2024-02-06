@@ -6,11 +6,13 @@ public class UIPanelStateMenu : UIPanelState
     [SerializeField] private MenuOptionSlotView _slotPrefab;
     [SerializeField] private Transform _root;
     private MenuOptionConfig _config;
+    private SignalBus _signalBus;
 
     [Inject]
-    public void Construct(MenuOptionConfig menuOptionConfig)
+    public void Construct(MenuOptionConfig menuOptionConfig, SignalBus signalBus)
     {
         _config = menuOptionConfig;
+        _signalBus = signalBus;
     }
 
     private void Start()
@@ -34,7 +36,7 @@ public class UIPanelStateMenu : UIPanelState
 
     public override void HandleConfirmButtonClicked()
     {
-        var vm = (MenuOptionViewModel) _viewModels[_currentIndex];
+        var vm = (MenuOptionViewModel)_viewModels[_currentIndex];
 
         switch (vm.OptionType)
         {
@@ -45,7 +47,7 @@ public class UIPanelStateMenu : UIPanelState
                 _stateController.SetPanelState(UIPanelStateType.Items);
                 break;
             case MenuOptionType.Run:
-                // СЁРЕЖА НЕ УБЕГАЕТ!
+                _signalBus.Fire(new PlayerRunSignal());
                 break;
         }
     }

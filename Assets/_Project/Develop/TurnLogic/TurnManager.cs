@@ -71,4 +71,11 @@ public class TurnManager : MonoBehaviour
         return command;
     }
 
+    public Command CreateLoadSceneCommand(string sceneName)
+    {
+        var command = new LoadSceneCommand(new LoadSceneData(sceneName));
+        _container.Inject(command);
+        return command;
+    }
+
 }
