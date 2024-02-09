@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/Scenes/Walking.unity
+    guid: 04ff822ce07b9f44c853dbdb2873fb1e
+  - enabled: 1
     path: Assets/_Project/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

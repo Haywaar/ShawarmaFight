@@ -42,7 +42,6 @@ public class GameStateController : MonoBehaviour
             _prevGameState = _currentGameState.GameStateType;
             _currentGameState = newGameState;
             newGameState.OnEnter();
-            //EventManager -> Notify - state changed!
         }
     }
 }

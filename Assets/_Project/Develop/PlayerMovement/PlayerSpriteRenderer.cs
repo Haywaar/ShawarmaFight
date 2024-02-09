@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class PlayerSpriteRenderer : MonoBehaviour
@@ -11,15 +10,15 @@ public class PlayerSpriteRenderer : MonoBehaviour
     private float _curFrameDelay;
     private Vector3 _prevDirection;
 
-    private void Update()
+    public void MoveDone(Vector3 moveDir)
     {
         _curFrameDelay += Time.deltaTime;
         if (_curFrameDelay < _frameDelay)
         {
             return;
         }
+
         _curFrameDelay = 0f;
-        var moveDir = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         if (moveDir.x != 0 && moveDir.y != 0)
         {
             _prevDirection = moveDir;

@@ -30,7 +30,6 @@ public class GameInstaller : MonoInstaller
 
     _effectApplier = new EffectApplier();
     Container.BindInstance(_effectApplier);
-    Container.QueueForInject(_effectApplier);
 
     Container.BindInstance(_turnManager);
 
