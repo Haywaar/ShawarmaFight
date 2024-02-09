@@ -20,16 +20,16 @@ MonoBehaviour:
     _isEnemy: 1
     unitAbilities:
     - AbilityID: 1
-      CurrentQuantity: 1
+      CurrentQuantity: 5
       MaxQuantity: 5
     - AbilityID: 2
-      CurrentQuantity: 1
+      CurrentQuantity: 2
       MaxQuantity: 2
     - AbilityID: 3
-      CurrentQuantity: 0
+      CurrentQuantity: 1
       MaxQuantity: 1
     - AbilityID: 0
-      CurrentQuantity: 0
+      CurrentQuantity: 3
       MaxQuantity: 3
     _unitItems:
     - ItemId: 0

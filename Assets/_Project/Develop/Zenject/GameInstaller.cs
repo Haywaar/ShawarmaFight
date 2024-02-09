@@ -15,10 +15,7 @@ public class GameInstaller : MonoInstaller
 
   public override void InstallBindings()
   {
-    SignalBusInstaller.Install(Container);
-    Container.DeclareSignal<ItemUsedSignal>().OptionalSubscriber();
-    Container.DeclareSignal<PlayerUsedAbilitySignal>().OptionalSubscriber();
-    Container.DeclareSignal<PlayerRunSignal>().OptionalSubscriber();
+    BindSignals();
 
     Container.Bind<UIPanelInputController>().FromInstance(_inputController);
     Container.Bind<UIPanelStateController>().FromInstance(_stateController);
@@ -28,19 +25,28 @@ public class GameInstaller : MonoInstaller
     Container.Bind<TickManager>().FromInstance(_tickManager);
 
     var gameStateFabric = new GameStateFabric();
-    Container.Bind<GameStateFabric>().FromInstance(gameStateFabric);
-    Container.Inject(gameStateFabric);
+    Container.BindInstance(gameStateFabric);
+    Container.QueueForInject(gameStateFabric);
 
     _effectApplier = new EffectApplier();
-    Container.Inject(_effectApplier);
-    Container.Bind<EffectApplier>().FromInstance(_effectApplier);
+    Container.BindInstance(_effectApplier);
+    Container.QueueForInject(_effectApplier);
 
-    Container.Bind<TurnManager>().FromInstance(_turnManager);
+    Container.BindInstance(_turnManager);
 
-    Container.Bind<GameStateController>().FromInstance(_gameStateController);
+    Container.BindInstance(_gameStateController);
 
     var targetHelper = new TargetHelper();
     Container.Bind<TargetHelper>().FromInstance(targetHelper);
-    Container.Inject(targetHelper);
+    Container.QueueForInject(targetHelper);
+  }
+
+  private void BindSignals()
+  {
+    SignalBusInstaller.Install(Container);
+
+    Container.DeclareSignal<ItemUsedSignal>().OptionalSubscriber();
+    Container.DeclareSignal<PlayerUsedAbilitySignal>().OptionalSubscriber();
+    Container.DeclareSignal<PlayerRunSignal>().OptionalSubscriber();
   }
 }

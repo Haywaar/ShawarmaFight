@@ -5,10 +5,6 @@ using Zenject;
 
 public class TurnManager : MonoBehaviour
 {
-    // private Queue turns
-    // public void AddTurn
-    // public void OnTurnDone
-
     private DiContainer _container;
 
     [Inject]

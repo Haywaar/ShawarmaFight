@@ -50,8 +50,6 @@ public class PlayerSpriteRenderer : MonoBehaviour
         {
             SetIdleSprite();
         }
-
-        //check prev x -> set idle renderer
     }
 
     private void SetSprite(PlayerSpritePack playerSpritePack)
