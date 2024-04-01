@@ -7,6 +7,8 @@ public class GameStateEnemyTurn : GameState
     private UnitModel _enemy;
     [Inject]
     private TargetHelper _targetHelper;
+    [Inject]
+    private CommandFabric _commandFabric;
 
     [Inject]
     private TurnManager _turnManager;
@@ -26,21 +28,21 @@ public class GameStateEnemyTurn : GameState
         var randomAbilityId = UnityEngine.Random.Range(0, _enemy.Abilities.Count);
         var ability = _enemy.Abilities[randomAbilityId];
 
-        var command0 = _turnManager.CreateSetMenuStateCommand(UIPanelStateType.Message);
+        var command0 = _commandFabric.CreateSetMenuStateCommand(UIPanelStateType.Message);
 
         var abilityStrings = new List<string>() { string.Format("{0} использует {1}",_enemy.Name, ability.Name) };
-        var command1 = _turnManager.CreateShowMessageCommand(abilityStrings);
-        var commandPunch = _turnManager.CreateShowAnimationCommand(ShowAnimationType.Punch, true);
+        var command1 = _commandFabric.CreateShowMessageCommand(abilityStrings);
+        var commandPunch = _commandFabric.CreateShowAnimationCommand(ShowAnimationType.Punch, true);
 
         var effectCommands = new List<Command>();
         foreach (var effect in ability.Effects)
         {
             var target = _targetHelper.GetTarget(effect.TargetType, false);
-            var command = _turnManager.CreateApplyEffectCommand(effect, target);
+            var command = _commandFabric.CreateApplyEffectCommand(effect, target);
             effectCommands.Add(command);
         }
-        var command3 = _turnManager.CreateSetMenuStateCommand(UIPanelStateType.Menu);
-        var command4 = _turnManager.CreateSetGameStateCommand(GameStateType.GameStatusCheck);
+        var command3 = _commandFabric.CreateSetMenuStateCommand(UIPanelStateType.Menu);
+        var command4 = _commandFabric.CreateSetGameStateCommand(GameStateType.GameStatusCheck);
 
         var commands = new List<Command>()
         {

@@ -33,6 +33,10 @@ public class GameInstaller : MonoInstaller
 
     Container.BindInstance(_turnManager);
 
+    var commandFabric = new CommandFabric();
+    Container.BindInstance(commandFabric);
+    Container.QueueForInject(commandFabric);
+
     Container.BindInstance(_gameStateController);
 
     var targetHelper = new TargetHelper();

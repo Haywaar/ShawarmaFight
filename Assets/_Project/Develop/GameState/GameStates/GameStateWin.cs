@@ -5,6 +5,8 @@ public class GameStateWin : GameState
 {
     [Inject]
     private TurnManager _turnManager;
+    [Inject]
+    private CommandFabric _commandFabric;
 
     public GameStateWin(GameStateType gameStateType) : base(gameStateType)
     {
@@ -17,11 +19,11 @@ public class GameStateWin : GameState
 
     public override void OnEnter()
     {
-        var command0 = _turnManager.CreateSetMenuStateCommand(UIPanelStateType.Message);
+        var command0 = _commandFabric.CreateSetMenuStateCommand(UIPanelStateType.Message);
         var strings = new List<string> { "Молодец!", "Спортик и труд жирок перетрут!","Вы получили опыт, но так как фичи прокачки нет - просто вам почёт и уважение!" };
-        var command1 = _turnManager.CreateShowMessageCommand(strings);
+        var command1 = _commandFabric.CreateShowMessageCommand(strings);
 
-        var command2 = _turnManager.CreateLoadSceneCommand(StringConstants.WALKING_SCENE_NAME);
+        var command2 = _commandFabric.CreateLoadSceneCommand(StringConstants.WALKING_SCENE_NAME);
         var commands = new List<Command>(){
             command0,
             command1,
